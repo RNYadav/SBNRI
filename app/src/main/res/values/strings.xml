@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RAVI SBNRI</string>
+    <string name="admin_permission_icon_description">Admin Permission Icon</string>
+    <string name="pull_permission_icon_description">Pull_Permission Icon</string>
+    <string name="push_permission_icon_description">Push Permission Icon</string>
 </resources>
