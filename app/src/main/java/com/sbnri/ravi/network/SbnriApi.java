@@ -8,6 +8,6 @@ import retrofit2.http.Path;
 
 public interface SbnriApi {
 
-    @GET("/orgs/octokit/repos?page=1&per_page=10")
+    @GET("/orgs/octokit/repos?page=1&per_page=1000")
     Call<List<DataResponse>> getData();
 }

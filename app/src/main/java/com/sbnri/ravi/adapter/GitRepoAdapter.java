@@ -13,12 +13,15 @@ import com.sbnri.ravi.R;
 import com.sbnri.ravi.databinding.RowGitrepoBinding;
 import com.sbnri.ravi.model.GitRepo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GitRepoAdapter extends RecyclerView.Adapter<GitRepoAdapter.GitRepoViewHolder> {
 
-    private List<GitRepo> list = new ArrayList<>();
+    private List<GitRepo> list;
+
+    public GitRepoAdapter(PagedList<GitRepo> gitRepos) {
+        this.list = gitRepos;
+    }
 
     @NonNull
     @Override
@@ -37,11 +40,6 @@ public class GitRepoAdapter extends RecyclerView.Adapter<GitRepoAdapter.GitRepoV
     @Override
     public int getItemCount() {
         return list.size();
-    }
-
-    public void setData(PagedList<GitRepo> repos) {
-        list.addAll(repos);
-        notifyDataSetChanged();
     }
 
     public class GitRepoViewHolder extends RecyclerView.ViewHolder {

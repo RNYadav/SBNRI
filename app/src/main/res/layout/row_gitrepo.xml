@@ -19,7 +19,7 @@
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="8dp"
         android:clipChildren="true"
-        app:cardBackgroundColor="@android:color/darker_gray">
+        app:cardBackgroundColor="#d1d5da">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,21 +32,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                app:srcCompat="@drawable/ic_pull"
+                app:srcCompat="@drawable/ic_user"
                 android:contentDescription="@string/admin_permission_icon_description" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                app:srcCompat="@drawable/ic_pull"
+                app:srcCompat="@drawable/ic_download_cloud"
                 android:contentDescription="@string/pull_permission_icon_description" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                app:srcCompat="@drawable/ic_pull"
+                app:srcCompat="@drawable/ic_upload_cloud"
                 android:contentDescription="@string/push_permission_icon_description" />
 
         </LinearLayout>
@@ -66,24 +66,25 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@{model.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{model.name}"
                     tools:text="My Repo Name" />
 
                 <TextView
                     android:id="@+id/desc"
                     style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingBottom="8dp"
+                    android:text="@{model.desc}"
                     app:layout_constraintBottom_toTopOf="@+id/issues"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name"
-                    android:text="@{model.desc}"
                     tools:text="My Repo Name" />
 
                 <TextView
@@ -91,11 +92,9 @@
                     style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_pull"
+                    android:drawableStart="@drawable/ic_issues"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="@{String.valueOf(model.issue_count)}"
@@ -106,11 +105,9 @@
                     style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_pull"
+                    android:drawableStart="@drawable/ic_license"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:text="@{model.license}"
