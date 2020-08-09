@@ -17,10 +17,11 @@ public class DataRepository {
         appDao = database.appDao();
     }
 
-
-
     public LiveData<PagedList<GitRepo>> getRepo() {
-        return new LivePagedListBuilder<>(appDao.getRepo(), 50) .build();
+        PagedList.Config config = (new PagedList.Config.Builder())
+                .setEnablePlaceholders(false)
+                .setPageSize(10).build();
+        return new LivePagedListBuilder<>(appDao.getRepo(), config).build();
     }
 
     public void insertData (Object... data){

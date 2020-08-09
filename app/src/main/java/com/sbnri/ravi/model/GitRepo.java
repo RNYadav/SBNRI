@@ -1,8 +1,14 @@
 package com.sbnri.ravi.model;
 
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.BindingAdapter;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.sbnri.ravi.R;
 
 @Entity
 public class GitRepo {
@@ -104,5 +110,24 @@ public class GitRepo {
 
     public void setP_push(Boolean p_push) {
         this.p_push = p_push;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+
+        GitRepo gitRepo = (GitRepo) obj;
+        return gitRepo.getId() == this.id;
+    }
+
+
+    @BindingAdapter("setTint")
+    public static void setData(ImageView imageView, Boolean status){
+        if(status)
+            imageView.setColorFilter(ContextCompat.getColor(imageView.getContext(), R.color.colorPrimaryDark), android.graphics.PorterDuff.Mode.SRC_IN);
+        else
+            imageView.setColorFilter(ContextCompat.getColor(imageView.getContext(), R.color.colorAccent), android.graphics.PorterDuff.Mode.SRC_IN);
     }
 }

@@ -32,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
+                setTint="@{model.p_admin}"
                 app:srcCompat="@drawable/ic_user"
                 android:contentDescription="@string/admin_permission_icon_description" />
 
@@ -39,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
+                setTint="@{model.p_pull}"
                 app:srcCompat="@drawable/ic_download_cloud"
                 android:contentDescription="@string/pull_permission_icon_description" />
 
@@ -46,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
+                setTint="@{model.p_push}"
                 app:srcCompat="@drawable/ic_upload_cloud"
                 android:contentDescription="@string/push_permission_icon_description" />
 

@@ -26,9 +26,15 @@ public class RefreshHandler {
 
     private static void refreshData(Application application) {
         SbnriApi api = RetrofitClientInstance.getInstance(application).create(SbnriApi.class);
-        DataRepository dataRepository = new DataRepository(application);
         Call<List<DataResponse>> call = api.getData();
-        call.enqueue(new Callback<List<DataResponse>>() {
+        call.enqueue(dataCallback(application));
+
+    }
+
+    public static Callback<List<DataResponse>> dataCallback( Application application){
+
+        DataRepository dataRepository = new DataRepository(application);
+        return new Callback<List<DataResponse>>() {
             @Override
             public void onResponse(Call<List<DataResponse>> call, Response<List<DataResponse>> response) {
                 Log.e("TAG", "onResponse: "+ response.toString());
@@ -49,12 +55,11 @@ public class RefreshHandler {
 
             @Override
             public void onFailure(Call<List<DataResponse>> call, Throwable t) {
-                Toast.makeText(application, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(application, "Problem Loading Data", Toast.LENGTH_SHORT).show();
                 Log.e("TAG", "onFailure: ", t);
 
             }
 
-        });
-
+        };
     }
 }

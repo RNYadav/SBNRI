@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sbnri.ravi.BR;
@@ -13,14 +15,25 @@ import com.sbnri.ravi.R;
 import com.sbnri.ravi.databinding.RowGitrepoBinding;
 import com.sbnri.ravi.model.GitRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class GitRepoAdapter extends RecyclerView.Adapter<GitRepoAdapter.GitRepoViewHolder> {
+public class GitRepoAdapter extends PagedListAdapter<GitRepo, GitRepoAdapter.GitRepoViewHolder> {
 
-    private List<GitRepo> list;
+    private List<GitRepo> list = new ArrayList<>();
 
-    public GitRepoAdapter(PagedList<GitRepo> gitRepos) {
-        this.list = gitRepos;
+    public GitRepoAdapter() {
+        super(new DiffUtil.ItemCallback<GitRepo>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull GitRepo oldItem, @NonNull GitRepo newItem) {
+                return oldItem.getId() == newItem.getId();
+            }
+
+            @Override
+            public boolean areContentsTheSame(@NonNull GitRepo oldItem, @NonNull GitRepo newItem) {
+                return oldItem.equals(newItem);
+            }
+        });
     }
 
     @NonNull
@@ -40,6 +53,11 @@ public class GitRepoAdapter extends RecyclerView.Adapter<GitRepoAdapter.GitRepoV
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void updateList(PagedList<GitRepo> gitRepos) {
+        list = gitRepos;
+        notifyDataSetChanged();
     }
 
     public class GitRepoViewHolder extends RecyclerView.ViewHolder {
